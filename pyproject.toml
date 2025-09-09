@@ -1,12 +1,12 @@
 [build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "Test-project"
 dynamic = ["version"]
 authors = [
-  { name="Hemant Sharma", email="hemantsharmanow@gmail.com" },
+  { name="Example Author", email="author@example.com" },
 ]
 description = "A small example package"
 readme = "README.md"
@@ -16,7 +16,6 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ] 
-dependencies = ["requests"]
 
-[tool.setuptools.dynamic]
+[tool.hatch.dynamic]
 version = {file = "VERSION"}
