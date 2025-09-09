@@ -1,12 +1,12 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "Test-project"
 dynamic = ["version"]
 authors = [
-  { name="Example Author", email="author@example.com" },
+  { name="Hemant Sharma", email="hemantsharmanow@gmail.com" },
 ]
 description = "A small example package"
 readme = "README.md"
@@ -18,5 +18,5 @@ classifiers = [
 ] 
 dependencies = ["requests"]
 
-[tool.hatch.dynamic]
+[tool.setuptools.dynamic]
 version = {file = "VERSION"}
