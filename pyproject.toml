@@ -3,7 +3,7 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "Test project"
+name = "Test-project"
 dynamic = ["version"]
 authors = [
   { name="Hemant Sharma", email="hemantsharmanow@gmail.com" },
