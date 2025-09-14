@@ -9,9 +9,9 @@ on:
       - main
 
 env:
-  CLOUDSMITH_NAMESPACE: ${{ vars.CLOUDSMITH_NAMESPACE }}
+  CLOUDSMITH_NAMESPACE: "interview-hemant-sharma"
   CLOUDSMITH_REPOSITORY: "staging"
-  CLOUDSMITH_SERVICE_SLUG: ${{ vars.CLOUDSMITH_SERVICE_SLUG }}
+  CLOUDSMITH_SERVICE_SLUG: "github_actions-thir"
 
 permissions:
   id-token: write
