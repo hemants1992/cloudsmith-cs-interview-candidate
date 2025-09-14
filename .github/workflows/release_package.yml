@@ -44,7 +44,7 @@ jobs:
         with:
           oidc-namespace: ${{ env.CLOUDSMITH_NAMESPACE }}     # Replace with your Cloudsmith workspace
           oidc-service-slug: ${{ env.CLOUDSMITH_REPOSITORY }} # Replace with your service account slug
-          oidc-auth-only: 'false'
+          oidc-auth-only: 'true'
 
       - name: Push package to Cloudsmith
         run: |
