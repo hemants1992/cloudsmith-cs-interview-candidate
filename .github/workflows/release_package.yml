@@ -37,10 +37,9 @@ jobs:
         run: ls -la dist/
         shell: bash
 
-      # - uses: cloudsmith-io/cloudsmith-cli-action@master
-      #   with:
-      #     oidc-namespace: 'your-oidc-namespace'
-      #     oidc-service-slug: 'your-service-account-slug'    
+      - name: cloudsmith cli install
+        run: |
+          pip install --upgrade cloudsmith-cli
 
       # This step handles the entire OIDC authentication flow automatically.
       # It gets a token from GitHub and exchanges it for a Cloudsmith token.
