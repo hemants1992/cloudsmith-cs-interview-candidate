@@ -36,14 +36,19 @@ jobs:
       - name: List directory contents
         run: ls -la dist/
         shell: bash
-      
+
+      - uses: cloudsmith-io/cloudsmith-cli-action@master
+        with:
+          oidc-namespace: 'your-oidc-namespace'
+          oidc-service-slug: 'your-service-account-slug'    
+
       # This step handles the entire OIDC authentication flow automatically.
       # It gets a token from GitHub and exchanges it for a Cloudsmith token.
       - name: Authenticate with Cloudsmith via OIDC
         uses: cloudsmith-io/cloudsmith-cli-action@v1.0.3
         with:
           oidc-namespace: ${{ env.CLOUDSMITH_NAMESPACE }}     # Replace with your Cloudsmith workspace
-          oidc-service-slug: ${{ env.CLOUDSMITH_REPOSITORY }} # Replace with your service account slug
+          oidc-service-slug: ${{ env.CLOUDSMITH_SERVICE_SLUG }} # Replace with your service account slug
           oidc-auth-only: 'true'
 
       - name: Push package to Cloudsmith
