@@ -39,7 +39,7 @@ jobs:
 
       - name: cloudsmith cli install
         run: |
-          pip install --upgrade cloudsmith-cli
+          pip3 install --upgrade cloudsmith-cli
 
       # This step handles the entire OIDC authentication flow automatically.
       # It gets a token from GitHub and exchanges it for a Cloudsmith token.
