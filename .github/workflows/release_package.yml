@@ -63,16 +63,18 @@ jobs:
           tags: "ready-for-production"
 
       - name: check the status of the package
+        id: check_status
         run: |
-          cloudsmith list packages ${{ env.CLOUDSMITH_NAMESPACE }}/${{ env.CLOUDSMITH_REPOSITORY }} -q "status:synchronised" || cloudsmith list packages ${{ env.CLOUDSMITH_NAMESPACE }}/${{ env.CLOUDSMITH_REPOSITORY }} -q "status:completed"
+          cloudsmith list packages ${{ env.CLOUDSMITH_NAMESPACE }}/${{ env.CLOUDSMITH_REPOSITORY }} -q "status:completed"
 
-      # - name: trigger promotion workflow
-      #   run: |
-      #     curl -X POST https://api.github.com/repos/hemants1992/cloudsmith-cs-interview-candidate/actions/workflows/promote_package.yml/dispatches \
-      #       -H "Accept: application/vnd.github+json" \
-      #       -H "Authorization: Bearer ${{secrets.GH_TOKEN}}" \
-      #       -H "X-GitHub-Api-Version: 2022-11-28" \
-      #       -d '{"ref":"main"}'
+      - name: trigger promotion workflow
+        if: ${{ steps.check_status.outcome == 'success' }}
+        run: |
+          curl -X POST https://api.github.com/repos/hemants1992/cloudsmith-cs-interview-candidate/actions/workflows/promote_package.yml/dispatches \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{secrets.GH_TOKEN}}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            -d '{"ref":"main"}'
 
           
         
