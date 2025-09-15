@@ -56,7 +56,6 @@ jobs:
             echo "No package found to upload"
             exit 1
           fi
-          cloudsmith token
           cloudsmith push python interview-hemant-sharma/staging dist/*.tar.gz --republish
         shell: bash
 
