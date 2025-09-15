@@ -62,6 +62,7 @@ jobs:
 
       - uses: cloudsmith-io/action@master
         with:
+          api-key: ${{ secrets.CLOUDSMITH_API_KEY }}
           command: "push"
           format: "python"
           owner: "interview-hemant-sharma"
