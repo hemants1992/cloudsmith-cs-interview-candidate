@@ -50,25 +50,20 @@ jobs:
           oidc-service-slug: ${{ env.CLOUDSMITH_SERVICE_SLUG }} # Replace with your service account slug
           oidc-auth-only: 'true'
 
-      # - name: Push package to Cloudsmith
-      #   run: |
-      #     if ! ls dist/*.tar.gz 1> /dev/null 2>&1; then
-      #       echo "No package found to upload"
-      #       exit 1
-      #     fi
-      #     cloudsmith push python interview-hemant-sharma/staging dist/*.tar.gz --republish
-      #   shell: bash
+      - name: Push package to Cloudsmith
+        run: |
+          cloudsmith push python -v interview-hemant-sharma/staging dist/*.tar.gz
 
 
-      - uses: cloudsmith-io/action@master
-        with:
-          api-key: ${{ env.CLOUDSMITH_API_KEY }}
-          command: "push"
-          format: "python"
-          owner: "interview-hemant-sharma"
-          repo: "staging"
-          republish: "true" # needed ONLY if version is not changing
-          file: "dist/*.tar.gz"
+      # - uses: cloudsmith-io/action@master
+      #   with:
+      #     api-key: ${{ env.CLOUDSMITH_API_KEY }}
+      #     command: "push"
+      #     format: "python"
+      #     owner: "interview-hemant-sharma"
+      #     repo: "staging"
+      #     republish: "true" # needed ONLY if version is not changing
+      #     file: "dist/*.tar.gz"
         
 
 
