@@ -50,7 +50,6 @@ jobs:
           oidc-service-slug: ${{ env.CLOUDSMITH_SERVICE_SLUG }} # Replace with your service account slug
           oidc-auth-only: 'true'
 
-
       - name: Push package to Cloudsmith using Action
         uses: cloudsmith-io/action@v0.6.14
         with:
