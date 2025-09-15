@@ -23,6 +23,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: cloudsmith cli install
+        run: |
+          pip3 install --upgrade cloudsmith-cli
+
       # This step handles the entire OIDC authentication flow automatically.
       # It gets a token from GitHub and exchanges it for a Cloudsmith token.
       - name: Authenticate with Cloudsmith via OIDC
@@ -34,6 +38,7 @@ jobs:
 
       - name: Get package identifier and promote
         run: |
+          set -x
           # Query for the package and get its identifier
           PACKAGE_QUERY="filename:${PACKAGE_NAME}-${{ github.event.inputs.package_version }}.tar.gz"
           echo "Searching for package with query: $PACKAGE_QUERY"
