@@ -8,6 +8,11 @@ on:
         required: true
         type: string
 
+  # Allows external webhook trigger
+  repository_dispatch:
+    types:
+      - webhook
+
 env:
   CLOUDSMITH_NAMESPACE: ${{ vars.CLOUDSMITH_NAMESPACE }}
   CLOUDSMITH_STAGING_REPO: 'staging'
