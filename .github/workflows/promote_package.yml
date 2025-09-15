@@ -13,7 +13,7 @@ env:
   CLOUDSMITH_STAGING_REPO: 'staging'
   CLOUDSMITH_PRODUCTION_REPO: 'production'
   CLOUDSMITH_SERVICE_SLUG: ${{ vars.CLOUDSMITH_SERVICE_SLUG }}
-  PACKAGE_NAME: 'Test-project'
+  PACKAGE_NAME: 'test_project-000targz-fhx2'
 
 permissions:
   id-token: write
