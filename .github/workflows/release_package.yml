@@ -58,8 +58,8 @@ jobs:
           format: "python"
           owner: "interview-hemant-sharma"
           repo: "staging"
-          version: "0.0.1"
-          republish: "true" # needed ONLY if version is not changing
+          #version: "0.0.1"
+          #republish: "true" # needed ONLY if version is not changing
           file: "dist/*.tar.gz"
         
 
