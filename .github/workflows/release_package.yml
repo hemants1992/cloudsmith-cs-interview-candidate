@@ -60,6 +60,7 @@ jobs:
           version: "any-version"
           republish: "true" # needed ONLY if version is not changing
           file: "dist/*.tar.gz"
+          tags: "ready-for-production"
         
 
 
