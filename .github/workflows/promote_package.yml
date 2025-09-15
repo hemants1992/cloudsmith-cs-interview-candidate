@@ -13,7 +13,7 @@ env:
   CLOUDSMITH_STAGING_REPO: 'staging'
   CLOUDSMITH_PRODUCTION_REPO: 'production'
   CLOUDSMITH_SERVICE_SLUG: ${{ vars.CLOUDSMITH_SERVICE_SLUG }}
-  PACKAGE_NAME: 'example_package'
+  PACKAGE_NAME: 'Test-project'
 
 permissions:
   id-token: write
@@ -23,11 +23,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install Cloudsmith CLI
-        uses: cloudsmith-io/cloudsmith-cli-action@v1.0.1
+      # This step handles the entire OIDC authentication flow automatically.
+      # It gets a token from GitHub and exchanges it for a Cloudsmith token.
+      - name: Authenticate with Cloudsmith via OIDC
+        uses: cloudsmith-io/cloudsmith-cli-action@v1.0.4
         with:
-          oidc-namespace: ${{ env.CLOUDSMITH_NAMESPACE }}
-          oidc-service-slug: ${{ env.CLOUDSMITH_SERVICE_SLUG }}
+          oidc-namespace: ${{ env.CLOUDSMITH_NAMESPACE }}     # Replace with your Cloudsmith workspace
+          oidc-service-slug: ${{ env.CLOUDSMITH_SERVICE_SLUG }} # Replace with your service account slug
+          oidc-auth-only: 'true'
 
       - name: Get package identifier and promote
         run: |
