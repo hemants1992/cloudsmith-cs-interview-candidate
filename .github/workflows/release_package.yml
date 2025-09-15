@@ -58,7 +58,7 @@ jobs:
           owner: "interview-hemant-sharma"
           repo: "staging"
           version: "any-version"
-          #republish: "true" # needed ONLY if version is not changing
+          republish: "true" # needed ONLY if version is not changing
           file: "dist/*.tar.gz"
         
 
