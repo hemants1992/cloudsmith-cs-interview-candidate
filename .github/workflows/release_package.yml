@@ -61,6 +61,16 @@ jobs:
           republish: "true" # needed ONLY if version is not changing
           file: "dist/*.tar.gz"
           tags: "ready-for-production"
+
+      - name: trigger promotion workflow
+        run: |
+          curl -X POST https://api.github.com/repos/hemants1992/cloudsmith-cs-interview-candidate/actions/workflows/promote_package.yml/dispatches \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{secrets.GH_TOKEN}}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            -d '{"ref":"main"}'
+
+          
         
 
 
